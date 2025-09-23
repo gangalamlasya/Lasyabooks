@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Thank You — Moonlit Pages</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --primary:#6c5ce7;
+      --secondary:#ff7ab6;
+      --bg:#f7f9fb;
+      --surface:#fff;
+      --muted:#6b7280;
+    }
+    *{box-sizing:border-box}
+    body{margin:0;font-family:Inter,system-ui, -apple-system, "Segoe UI", Roboto, Arial;background:var(--bg);color:#0f172a;display:flex;align-items:center;justify-content:center;height:100vh;padding:18px}
+    .card{max-width:720px;background:linear-gradient(180deg, rgba(255,255,255,0.9), rgba(255,255,255,0.98));padding:28px;border-radius:16px;box-shadow:0 18px 48px rgba(16,24,40,0.06);text-align:center}
+    .emoji{font-size:44px;display:block;margin-bottom:8px}
+    h1{font-family:Playfair Display,serif;color:var(--primary);margin:6px 0}
+    p{color:var(--muted);margin:8px 0 18px}
+    .btn{padding:12px 18px;border-radius:12px;border:0;cursor:pointer;font-weight:700;color:white;background:linear-gradient(90deg,var(--primary),var(--secondary));box-shadow:0 8px 28px rgba(108,92,231,0.12)}
+    .muted{font-size:13px;color:var(--muted);margin-top:12px}
+    .order{margin-top:14px;text-align:left;background:#fff;padding:12px;border-radius:10px;box-shadow:0 8px 22px rgba(16,24,40,0.03)}
+    @media(min-width:800px){body{padding:40px}}
+  </style>
+</head>
+<body>
+  <div class="card" role="main">
+    <div class="emoji">🎉</div>
+    <h1>Thank you for your purchase!</h1>
+    <p>Your order has been placed successfully. We'll send confirmation to your email shortly.</p>
+
+    <div id="orderInfo"></div>
+
+    <div style="margin-top:18px;display:flex;gap:10px;justify-content:center;flex-wrap:wrap">
+      <button class="btn" onclick="location.href='index.html'">Back to Home</button>
+      <button style="background:#fff;border:1px solid rgba(15,23,42,0.06);padding:10px 12px;border-radius:12px;cursor:pointer" onclick="viewOrder()">View Order</button>
+    </div>
+
+    <p class="muted">Tip: Your purchase details are saved in your browser (localStorage). Clear browser data to remove them.</p>
+  </div>
+
+  <script>
+    function loadOrder(){
+      const order = JSON.parse(localStorage.getItem('lastOrder') || 'null');
+      if(!order){
+        document.getElementById('orderInfo').innerHTML = '<div class="muted" style="margin-top:12px">No recent order found in this browser.</div>';
+        return;
+      }
+      document.getElementById('orderInfo').innerHTML = `
+        <div class="order">
+          <div><strong>Order ID:</strong> ${order.id}</div>
+          <div style="margin-top:6px"><strong>Book:</strong> ${order.product.title} — ${order.product.genre}</div>
+          <div style="margin-top:6px"><strong>Buyer:</strong> ${order.buyerName || '—'}</div>
+          <div style="margin-top:6px"><strong>Email:</strong> ${order.buyerEmail || '—'}</div>
+          <div style="margin-top:6px;color:var(--primary);font-weight:700">Total: ₹${order.product.price}</div>
+        </div>
+      `;
+    }
+
+    function viewOrder(){
+      const order = JSON.parse(localStorage.getItem('lastOrder') || 'null');
+      if(!order) return alert('No order found.');
+      alert(`Order ${order.id}\nBook: ${order.product.title}\nBuyer: ${order.buyerName}\nEmail: ${order.buyerEmail}\nTotal: ₹${order.product.price}`);
+    }
+
+    loadOrder();
+  </script>
+</body>
+</html>
