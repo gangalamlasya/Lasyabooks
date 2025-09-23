@@ -3,173 +3,146 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Moonlit Pages | Home</title>
+  <title>Lasya's Bookstore</title>
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Inter:wght@400;500&display=swap');
-
     body {
+      font-family: Arial, sans-serif;
       margin: 0;
-      font-family: 'Inter', sans-serif;
-      background: #f7f9fb;
+      background: #f5f7fa;
       color: #333;
     }
-
     header {
-      background: url('https://images.unsplash.com/photo-1512820790803-83ca734da794?w=1600') center/cover no-repeat;
-      padding: 6rem 2rem;
+      background: url('https://images.unsplash.com/photo-1524995997946-a1c2e315a42f') center/cover no-repeat;
+      padding: 80px 20px;
       text-align: center;
       color: white;
     }
     header h1 {
-      font-family: 'Playfair Display', serif;
       font-size: 3rem;
-      margin-bottom: 0.5rem;
+      margin: 0;
     }
     header p {
-      font-size: 1.2rem;
-      opacity: 0.9;
+      font-size: 1.3rem;
+      margin-top: 10px;
     }
-
     .products {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 1.5rem;
-      padding: 3rem 2rem;
-      max-width: 1200px;
-      margin: auto;
+      gap: 20px;
+      padding: 40px 20px;
     }
-
     .card {
-      background: #fff;
+      background: white;
       border-radius: 12px;
-      overflow: hidden;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.08);
-      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      padding: 20px;
+      text-align: left;
+      transition: transform 0.2s ease;
     }
     .card:hover {
       transform: translateY(-5px);
-      box-shadow: 0 6px 15px rgba(0,0,0,0.15);
     }
     .card img {
       width: 100%;
-      height: 280px;
+      height: 220px;
       object-fit: cover;
-    }
-    .card-body {
-      padding: 1rem;
+      border-radius: 10px;
+      margin-bottom: 15px;
     }
     .tag {
       display: inline-block;
-      background: #6c5ce7;
+      background: #6c63ff;
       color: white;
-      font-size: 0.75rem;
-      padding: 0.2rem 0.6rem;
-      border-radius: 6px;
-      margin-bottom: 0.5rem;
+      padding: 5px 10px;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      margin-bottom: 10px;
     }
-    .card h3 {
-      font-family: 'Playfair Display', serif;
-      margin: 0.3rem 0;
+    h3 {
+      margin: 10px 0;
+      font-size: 1.3rem;
+    }
+    p {
+      font-size: 0.95rem;
+      margin-bottom: 10px;
     }
     .price {
-      color: #ff7ab6;
-      font-weight: 600;
-      margin: 0.5rem 0;
+      font-weight: bold;
+      color: #e63946;
+      margin-bottom: 10px;
     }
     .btn {
-      background: #6c5ce7;
+      display: inline-block;
+      background: #6c63ff;
       color: white;
-      border: none;
-      padding: 0.6rem 1rem;
-      border-radius: 10px;
-      cursor: pointer;
-      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      padding: 10px 20px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-size: 0.9rem;
     }
     .btn:hover {
-      transform: scale(1.05);
-      box-shadow: 0 4px 12px rgba(108,92,231,0.4);
+      background: #574bdb;
     }
   </style>
 </head>
 <body>
+
   <header>
-    <h1>Moonlit Pages</h1>
-    <p>A cozy corner of curated tales — find your next great read ✨</p>
+    <h1>Lasya's Bookstore</h1>
+    <p>Dive into worlds of mystery, romance, and adventure</p>
   </header>
 
   <section class="products">
+    <!-- Book 1 -->
     <div class="card">
-      <img src="https://images.unsplash.com/photo-1526318472351-bc6c6c13c8e5?w=500" alt="Starlight Odyssey cover">
-      <div class="card-body">
-        <span class="tag">Science Fiction</span>
-        <h3>Starlight Odyssey</h3>
-        <p>A spacefaring epic exploring dreams, AI, and distant suns.</p>
-        <p class="price">₹499</p>
-        <button class="btn" onclick="buyProduct('Starlight Odyssey - Sci-Fi - ₹499')">Buy Now</button>
-      </div>
+      <img src="https://images.unsplash.com/photo-1512820790803-83ca734da794" alt="Starlight Odyssey cover">
+      <span class="tag">Science Fiction</span>
+      <h3>Starlight Odyssey</h3>
+      <p>A spacefaring epic exploring dreams, AI, and distant suns.</p>
+      <p class="price">₹499</p>
+      <a href="#" class="btn">Buy Now</a>
     </div>
 
+    <!-- Book 2 -->
     <div class="card">
-      <img src="https://images.unsplash.com/photo-1512820790803-83ca734da794?w=500" alt="Shadows in the Alley cover">
-      <div class="card-body">
-        <span class="tag">Mystery/Crime</span>
-        <h3>Shadows in the Alley</h3>
-        <p>A gritty detective novel with sharp twists and darker motives.</p>
-        <p class="price">₹349</p>
-        <button class="btn" onclick="buyProduct('Shadows in the Alley - Mystery - ₹349')">Buy Now</button>
-      </div>
+      <img src="https://images.unsplash.com/photo-1519681393784-d120267933ba" alt="Shadows in the Alley cover">
+      <span class="tag">Mystery/Crime</span>
+      <h3>Shadows in the Alley</h3>
+      <p>A gritty detective novel with sharp twists and darker motives.</p>
+      <p class="price">₹349</p>
+      <a href="#" class="btn">Buy Now</a>
     </div>
 
+    <!-- Book 3 -->
     <div class="card">
-      <img src="https://images.unsplash.com/photo-1507842217343-583bb7270b66?w=500" alt="When We Were Roses cover">
-      <div class="card-body">
-        <span class="tag">Romance</span>
-        <h3>When We Were Roses</h3>
-        <p>A tender tale of second chances and seaside summer days.</p>
-        <p class="price">₹299</p>
-        <button class="btn" onclick="buyProduct('When We Were Roses - Romance - ₹299')">Buy Now</button>
-      </div>
+      <img src="https://images.unsplash.com/photo-1528207776546-365bb710ee93" alt="When We Were Roses cover">
+      <span class="tag">Romance</span>
+      <h3>When We Were Roses</h3>
+      <p>A tender tale of second chances and seaside summer days.</p>
+      <p class="price">₹299</p>
+      <a href="#" class="btn">Buy Now</a>
     </div>
 
+    <!-- Book 4 -->
     <div class="card">
-      <img src="https://images.unsplash.com/photo-1529634817738-4b2a5d1d5f4a?w=500" alt="The Silent Hour cover">
-      <div class="card-body">
-        <span class="tag">Thriller/Suspense</span>
-        <h3>The Silent Hour</h3>
-        <p>Racing chapters and a secret that could unravel everything.</p>
-        <p class="price">₹399</p>
-        <button class="btn" onclick="buyProduct('The Silent Hour - Thriller - ₹399')">Buy Now</button>
-      </div>
+      <img src="https://images.unsplash.com/photo-1516979187457-637abb4f9353" alt="The Silent Hour cover">
+      <span class="tag">Thriller/Suspense</span>
+      <h3>The Silent Hour</h3>
+      <p>Racing chapters and a secret that could unravel everything.</p>
+      <p class="price">₹399</p>
+      <a href="#" class="btn">Buy Now</a>
     </div>
 
+    <!-- Book 5 -->
     <div class="card">
-      <img src="https://images.unsplash.com/photo-1606112219348-204d7d8b94ee?w=500" alt="Echoes of Empire cover">
-      <div class="card-body">
-        <span class="tag">Historical Fiction</span>
-        <h3>Echoes of Empire</h3>
-        <p>A sweeping story spanning eras and the cost of power.</p>
-        <p class="price">₹449</p>
-        <button class="btn" onclick="buyProduct('Echoes of Empire - Historical Fiction - ₹449')">Buy Now</button>
-      </div>
-    </div>
-
-    <div class="card">
-      <img src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=500" alt="Midnight Wake cover">
-      <div class="card-body">
-        <span class="tag">Horror</span>
-        <h3>Midnight Wake</h3>
-        <p>An atmospheric horror about a house that remembers.</p>
-        <p class="price">₹279</p>
-        <button class="btn" onclick="buyProduct('Midnight Wake - Horror - ₹279')">Buy Now</button>
-      </div>
+      <img src="https://images.unsplash.com/photo-1507842217343-583bb7270b66" alt="The Last Ember cover">
+      <span class="tag">Fantasy</span>
+      <h3>The Last Ember</h3>
+      <p>A magical realm, ancient prophecies, and a hero’s destiny.</p>
+      <p class="price">₹449</p>
+      <a href="#" class="btn">Buy Now</a>
     </div>
   </section>
 
-  <script>
-    function buyProduct(product) {
-      localStorage.setItem("selectedProduct", product);
-      window.location.href = "form.html";
-    }
-  </script>
 </body>
 </html>
