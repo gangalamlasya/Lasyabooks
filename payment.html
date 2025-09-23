@@ -3,35 +3,45 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Payment</title>
+<title>Payment - Mini Bookstore</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
 <style>
-  body { font-family: Arial, sans-serif; margin:0; padding:0; background: #f0f0f0; }
-  header { text-align: center; padding: 50px 20px; background: #444; color: white; }
-  .payment-box { max-width: 400px; margin: 30px auto; background: white; padding: 30px; border-radius: 10px; box-shadow: 0 0 10px rgba(0,0,0,0.1); text-align:center; }
-  input { width: 100%; padding: 10px; margin: 10px 0; border-radius: 5px; border: 1px solid #ccc; }
-  button { padding: 12px; width: 100%; border:none; background: #444; color: white; border-radius: 5px; cursor:pointer; }
-  button:hover { background: #666; }
+:root {
+  --primary: #6c5ce7;
+  --secondary: #ff7ab6;
+  --bg: #f7f9fb;
+  --card-bg: #ffffff;
+  --text-muted: #6b7280;
+}
+
+body { font-family:'Inter',sans-serif; background: var(--bg); color:#111; margin:0; padding:0; display:flex; flex-direction:column; min-height:100vh;}
+header { text-align:center; padding:50px 20px; font-family:'Playfair Display', serif;}
+header h1 { font-size:2.5em; color: var(--primary);}
+.payment-box { max-width:400px; margin:30px auto; background: var(--card-bg); padding:30px; border-radius:15px; box-shadow:0 8px 25px rgba(0,0,0,0.05);}
+.payment-box input { width:100%; padding:12px; margin:10px 0; border-radius:10px; border:1px solid #ccc;}
+button { padding:12px; width:100%; border:none; background: var(--primary); color:white; font-weight:600; border-radius:12px; cursor:pointer; transition: transform 0.2s, box-shadow 0.2s;}
+button:hover { transform: scale(1.03); box-shadow: 0 5px 15px rgba(108,92,231,0.4);}
 </style>
 </head>
 <body>
+
 <header>
   <h1>Payment</h1>
 </header>
 
 <div class="payment-box">
-  <h2>Enter Card Details</h2>
   <input type="text" placeholder="Card Number" required>
   <input type="text" placeholder="Name on Card" required>
   <input type="text" placeholder="Expiry MM/YY" required>
   <input type="text" placeholder="CVV" required>
-  <button id="payBtn">Pay Now</button>
+  <button id="payBtn">Proceed to Pay</button>
 </div>
 
 <script>
-  document.getElementById('payBtn').addEventListener('click', function() {
-    alert('Payment successful!');
-    window.location.href = 'thankyou.html';
-  });
+document.getElementById('payBtn').addEventListener('click', function(){
+  alert('Payment Successful!');
+  window.location.href = 'thankyou.html';
+});
 </script>
 </body>
 </html>
