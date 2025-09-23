@@ -13,9 +13,7 @@
   --card-bg: #ffffff;
   --text-muted: #6b7280;
 }
-
-* { box-sizing:border-box; margin:0; padding:0; }
-body { font-family:'Inter',sans-serif; background: var(--bg); color:#111; }
+body { font-family:'Inter',sans-serif; background: var(--bg); color:#111; margin:0; padding:0; }
 header { text-align:center; padding:50px 20px; font-family:'Playfair Display', serif; }
 header h1 { font-size:2.5em; color: var(--primary); }
 form { max-width:500px; margin:30px auto; background: var(--card-bg); padding:30px; border-radius:15px; box-shadow:0 8px 25px rgba(0,0,0,0.05); }
@@ -57,8 +55,8 @@ if(previousUser.email) document.getElementById('email').value = previousUser.ema
 // Show selected product
 if(selectedProduct.title){
   document.getElementById('productSummary').innerHTML = `
-    <strong>Product:</strong> ${selectedProduct.title}<br>
-    <strong>Genre:</strong> ${selectedProduct.genre}<br>
+    <strong>Book:</strong> ${selectedProduct.title}<br>
+    <strong>Author:</strong> ${selectedProduct.author}<br>
     <strong>Price:</strong> ${selectedProduct.price}
   `;
 }
