@@ -7,114 +7,115 @@
 <!-- Google Fonts -->
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
 <style>
-  :root {
+:root {
     --primary: #6c5ce7;
     --secondary: #ff7ab6;
     --bg: #f7f9fb;
     --card-bg: #ffffff;
     --text-muted: #6b7280;
-  }
+}
 
-  * { box-sizing: border-box; margin:0; padding:0; }
-  body { font-family: 'Inter', sans-serif; background: var(--bg); color: #111; }
+* { box-sizing: border-box; margin:0; padding:0; }
+body { font-family: 'Inter', sans-serif; background: var(--bg); color: #111; }
 
-  header { 
+header { 
     background: url('https://via.placeholder.com/1400x600') center/cover no-repeat;
     height: 60vh; display:flex; flex-direction:column; justify-content:center; align-items:center; text-align:center;
     color: white; font-family: 'Playfair Display', serif; text-shadow: 2px 2px 8px rgba(0,0,0,0.5);
-  }
-  header h1 { font-size: 3em; }
-  header p { font-size: 1.5em; margin-top:10px; }
+}
+header h1 { font-size: 3em; }
+header p { font-size: 1.5em; margin-top:10px; }
 
-  .products { display:grid; grid-template-columns: repeat(auto-fit,minmax(250px,1fr)); gap:20px; padding:40px 20px; }
+.products { display:grid; grid-template-columns: repeat(auto-fit,minmax(250px,1fr)); gap:20px; padding:40px 20px; }
 
-  .card {
+.card {
     background: var(--card-bg);
     border-radius: 15px;
     overflow:hidden;
     box-shadow: 0 4px 20px rgba(0,0,0,0.05);
     display:flex; flex-direction:column; transition: transform 0.3s, box-shadow 0.3s;
-  }
-  .card:hover { transform: translateY(-5px); box-shadow:0 8px 30px rgba(0,0,0,0.1);}
-  .card img { width:100%; height:180px; object-fit:cover; }
-  .card-content { padding:15px; flex:1; display:flex; flex-direction:column; }
-  .card h3 { font-family:'Playfair Display', serif; margin-bottom:5px; }
-  .card .genre { font-size:0.85em; color: var(--text-muted); margin-bottom:8px; }
-  .card p { font-size:0.9em; flex:1; margin-bottom:10px; color: var(--text-muted);}
-  .card .price { font-weight:bold; margin-bottom:10px; }
-  .card button {
+}
+.card:hover { transform: translateY(-5px); box-shadow:0 8px 30px rgba(0,0,0,0.1);}
+.card img { width:100%; height:180px; object-fit:cover; }
+.card-content { padding:15px; flex:1; display:flex; flex-direction:column; }
+.card h3 { font-family:'Playfair Display', serif; margin-bottom:5px; }
+.card .author { font-size:0.85em; color: var(--text-muted); margin-bottom:8px; }
+.card p { font-size:0.9em; flex:1; margin-bottom:10px; color: var(--text-muted);}
+.card .price { font-weight:bold; margin-bottom:10px; }
+.card button {
     background: var(--primary); color:white; border:none; padding:10px; border-radius:12px; cursor:pointer;
     transition: transform 0.2s, box-shadow 0.2s;
-  }
-  .card button:hover { transform: scale(1.03); box-shadow: 0 5px 15px rgba(108,92,231,0.4); }
+}
+.card button:hover { transform: scale(1.03); box-shadow: 0 5px 15px rgba(108,92,231,0.4); }
 
-  footer { text-align:center; padding:20px; color: var(--text-muted); font-size:0.9em; }
-  @media(max-width:600px){
+footer { text-align:center; padding:20px; color: var(--text-muted); font-size:0.9em; }
+
+@media(max-width:600px){
     header h1 { font-size:2em; }
     header p { font-size:1em; }
-  }
+}
 </style>
 </head>
 <body>
 
 <header>
-  <h1>Mini Bookstore</h1>
-  <p>Discover your next favorite read</p>
+    <h1>Mini Bookstore</h1>
+    <p>Discover your next favorite read</p>
 </header>
 
 <section class="products">
   <div class="card">
-    <img src="https://via.placeholder.com/300x180" alt="Sci-Fi">
+    <img src="https://via.placeholder.com/300x180" alt="Dune">
     <div class="card-content">
-      <h3>Galactic Adventures</h3>
-      <span class="genre">Science Fiction</span>
-      <p>An epic journey through space and time.</p>
+      <h3>Dune</h3>
+      <span class="author">by Frank Herbert</span>
+      <p>A science fiction masterpiece set on the desert planet Arrakis.</p>
       <div class="price">$15.99</div>
-      <button onclick="buyProduct('Galactic Adventures','Science Fiction','$15.99')">Buy Now</button>
+      <button onclick="buyProduct('Dune','Frank Herbert','$15.99')">Buy Now</button>
     </div>
   </div>
 
   <div class="card">
-    <img src="https://via.placeholder.com/300x180" alt="Mystery">
+    <img src="https://via.placeholder.com/300x180" alt="The Da Vinci Code">
     <div class="card-content">
-      <h3>Hidden Secrets</h3>
-      <span class="genre">Mystery</span>
-      <p>A thrilling tale of suspense and intrigue.</p>
+      <h3>The Da Vinci Code</h3>
+      <span class="author">by Dan Brown</span>
+      <p>A thrilling mystery that uncovers secrets hidden in famous artworks.</p>
       <div class="price">$12.99</div>
-      <button onclick="buyProduct('Hidden Secrets','Mystery','$12.99')">Buy Now</button>
+      <button onclick="buyProduct('The Da Vinci Code','Dan Brown','$12.99')">Buy Now</button>
     </div>
   </div>
 
   <div class="card">
-    <img src="https://via.placeholder.com/300x180" alt="Romance">
+    <img src="https://via.placeholder.com/300x180" alt="Pride and Prejudice">
     <div class="card-content">
-      <h3>Love in Bloom</h3>
-      <span class="genre">Romance</span>
-      <p>A heartwarming love story to cherish.</p>
+      <h3>Pride and Prejudice</h3>
+      <span class="author">by Jane Austen</span>
+      <p>A classic romance novel about love, society, and family dynamics.</p>
       <div class="price">$10.99</div>
-      <button onclick="buyProduct('Love in Bloom','Romance','$10.99')">Buy Now</button>
+      <button onclick="buyProduct('Pride and Prejudice','Jane Austen','$10.99')">Buy Now</button>
     </div>
   </div>
 
   <div class="card">
-    <img src="https://via.placeholder.com/300x180" alt="History">
+    <img src="https://via.placeholder.com/300x180" alt="Sapiens">
     <div class="card-content">
-      <h3>Past Echoes</h3>
-      <span class="genre">Historical Fiction</span>
-      <p>Explore history through a riveting narrative.</p>
+      <h3>Sapiens</h3>
+      <span class="author">by Yuval Noah Harari</span>
+      <p>An exploration of human history, evolution, and civilization.</p>
       <div class="price">$18.50</div>
-      <button onclick="buyProduct('Past Echoes','Historical Fiction','$18.50')">Buy Now</button>
+      <button onclick="buyProduct('Sapiens','Yuval Noah Harari','$18.50')">Buy Now</button>
     </div>
   </div>
 
   <div class="card">
-    <img src="https://via.placeholder.com/300x180" alt="Self-help">
+    <img src="https://via.placeholder.com/300x180" alt="Atomic Habits">
     <div class="card-content">
-      <h3>Mindful Living</h3>
-      <span class="genre">Self-Help</span>
-      <p>Practical tips to improve your daily life.</p>
+      <h3>Atomic Habits</h3>
+      <span class="author">by James Clear</span>
+      <p>Practical strategies to form good habits and break bad ones.</p>
       <div class="price">$9.99</div>
-      <button onclick="buyProduct('Mindful Living','Self-Help','$9.99')">Buy Now</button>
+      <button onclick="buyProduct('Atomic Habits','James Clear','$9.99')">Buy Now</button>
     </div>
   </div>
 </section>
@@ -124,8 +125,8 @@
 </footer>
 
 <script>
-function buyProduct(title, genre, price){
-  localStorage.setItem('selectedProduct', JSON.stringify({title, genre, price}));
+function buyProduct(title, author, price){
+  localStorage.setItem('selectedProduct', JSON.stringify({title, author, price}));
   window.location.href = 'form.html';
 }
 </script>
