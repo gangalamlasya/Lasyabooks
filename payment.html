@@ -1,177 +1,37 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Payment — Moonlit Pages</title>
-
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
-
-  <style>
-    :root{
-      --primary:#6c5ce7;
-      --secondary:#ff7ab6;
-      --bg:#f7f9fb;
-      --surface:#fff;
-      --muted:#6b7280;
-    }
-    *{box-sizing:border-box}
-    body{margin:0;font-family:Inter,system-ui, -apple-system, "Segoe UI", Roboto, Arial;background:var(--bg);color:#0f172a;padding:18px}
-    .container{max-width:920px;margin:0 auto}
-    header{display:flex;align-items:center;gap:12px;margin-bottom:14px}
-    .brand{font-family:Playfair Display,serif;color:var(--primary);font-size:20px;margin:0}
-
-    .grid{display:grid;gap:14px;grid-template-columns:1fr}
-    .panel{background:var(--surface);padding:16px;border-radius:14px;box-shadow:0 8px 26px rgba(16,24,40,0.04)}
-    .product{display:flex;gap:12px;align-items:center}
-    .thumb{width:90px;height:120px;border-radius:8px;overflow:hidden;background:#f2f4f7}
-    .thumb img{width:100%;height:100%;object-fit:cover}
-    .title{font-weight:700}
-
-    form{display:flex;flex-direction:column;gap:10px;margin-top:6px}
-    label{font-size:13px;color:var(--muted)}
-    input[type="text"], input[type="password"], input[type="month"], input[type="number"]{
-      padding:12px;border-radius:10px;border:1px solid rgba(15,23,42,0.06);font-size:14px;
-    }
-    .row{display:flex;gap:10px}
-    .row .col{flex:1}
-    .btn{padding:11px 16px;border-radius:12px;border:0;cursor:pointer;font-weight:700;color:white;background:linear-gradient(90deg,var(--primary),var(--secondary));box-shadow:0 10px 28px rgba(108,92,231,0.12)}
-    .btn:hover{transform:translateY(-3px)}
-    .note{color:var(--muted);font-size:13px}
-
-    @media(min-width:900px){
-      .grid{grid-template-columns:1fr 380px}
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Payment</title>
+<style>
+  body { font-family: Arial, sans-serif; margin:0; padding:0; background: #f0f0f0; }
+  header { text-align: center; padding: 50px 20px; background: #444; color: white; }
+  .payment-box { max-width: 400px; margin: 30px auto; background: white; padding: 30px; border-radius: 10px; box-shadow: 0 0 10px rgba(0,0,0,0.1); text-align:center; }
+  input { width: 100%; padding: 10px; margin: 10px 0; border-radius: 5px; border: 1px solid #ccc; }
+  button { padding: 12px; width: 100%; border:none; background: #444; color: white; border-radius: 5px; cursor:pointer; }
+  button:hover { background: #666; }
+</style>
 </head>
 <body>
-  <div class="container">
-    <header>
-      <h1 class="brand">Moonlit Pages</h1>
-      <div style="color:var(--muted)">— Secure Payment</div>
-    </header>
+<header>
+  <h1>Payment</h1>
+</header>
 
-    <main class="grid">
-      <section class="panel">
-        <h2 style="margin:0 0 8px;font-family:Playfair Display,serif">Payment Details</h2>
+<div class="payment-box">
+  <h2>Enter Card Details</h2>
+  <input type="text" placeholder="Card Number" required>
+  <input type="text" placeholder="Name on Card" required>
+  <input type="text" placeholder="Expiry MM/YY" required>
+  <input type="text" placeholder="CVV" required>
+  <button id="payBtn">Pay Now</button>
+</div>
 
-        <div id="productBlock" class="product" style="margin-bottom:12px">
-          <div class="thumb"><img id="pImg" alt=""></div>
-          <div>
-            <div id="pTitle" class="title">Selected Book</div>
-            <div id="pGenre" style="color:var(--muted);font-size:13px"></div>
-            <div id="pPrice" style="margin-top:8px;font-weight:700;color:var(--primary)"></div>
-          </div>
-        </div>
-
-        <form id="payForm" onsubmit="event.preventDefault(); submitPayment()">
-          <div>
-            <label for="cardNumber">Card number</label>
-            <input id="cardNumber" name="cardNumber" inputmode="numeric" maxlength="19" placeholder="4111 1111 1111 1111" required>
-          </div>
-
-          <div class="row">
-            <div class="col">
-              <label for="expiry">Expiry (MM/YY)</label>
-              <input id="expiry" name="expiry" placeholder="08/27" maxlength="5" required>
-            </div>
-            <div class="col">
-              <label for="cvv">CVV</label>
-              <input id="cvv" name="cvv" inputmode="numeric" maxlength="4" placeholder="123" required>
-            </div>
-          </div>
-
-          <div style="margin-top:8px;display:flex;gap:10px;align-items:center">
-            <button class="btn" type="submit">Proceed to Pay</button>
-            <button type="button" onclick="location.href='form.html'" style="background:#fff;border:1px solid rgba(15,23,42,0.06);padding:10px 12px;border-radius:12px;cursor:pointer">Back to Details</button>
-          </div>
-
-          <p class="note" style="margin-top:10px">This is a dummy payment form — no real transactions will occur. Card inputs are used only for demonstration.</p>
-        </form>
-      </section>
-
-      <aside class="panel">
-        <h3 style="margin:0 0 8px;font-family:Playfair Display,serif">Billing Summary</h3>
-        <div id="summary" style="font-size:15px;color:var(--muted)">
-          <!-- filled by JS -->
-        </div>
-      </aside>
-    </main>
-  </div>
-
-  <script>
-    const selected = JSON.parse(localStorage.getItem('selectedProduct') || 'null');
-    const cName = localStorage.getItem('checkoutName') || '';
-    const cEmail = localStorage.getItem('checkoutEmail') || '';
-
-    function show(){
-      if(selected){
-        document.getElementById('pImg').src = selected.img;
-        document.getElementById('pTitle').textContent = selected.title;
-        document.getElementById('pGenre').textContent = selected.genre;
-        document.getElementById('pPrice').textContent = '₹' + selected.price;
-        document.getElementById('summary').innerHTML = `
-          <div><strong>Buyer:</strong> ${cName || '—'}</div>
-          <div style="margin-top:6px"><strong>Email:</strong> ${cEmail || '—'}</div>
-          <div style="margin-top:16px;font-weight:700"><strong>Total:</strong> ₹${selected.price}</div>
-        `;
-      } else {
-        document.getElementById('productBlock').innerHTML = '<div style="color:var(--muted)">No product selected — go back and pick a book.</div>';
-        document.getElementById('summary').textContent = '';
-      }
-    }
-    show();
-
-    function luhnCheck(val){
-      // basic Luhn algorithm to allow plausible card numbers (not required but nice)
-      const s = val.replace(/\s+/g,'');
-      let sum = 0, alt=false;
-      for(let i=s.length-1;i>=0;i--){
-        let n = parseInt(s[i],10);
-        if(isNaN(n)) return false;
-        if(alt){ n*=2; if(n>9) n-=9; }
-        sum += n; alt = !alt;
-      }
-      return sum % 10 === 0;
-    }
-
-    function submitPayment(){
-      if(!selected){ alert('No product selected'); location.href='index.html'; return; }
-
-      const card = document.getElementById('cardNumber').value.replace(/\s+/g,'');
-      const expiry = document.getElementById('expiry').value.trim();
-      const cvv = document.getElementById('cvv').value.trim();
-
-      // very basic validation
-      if(card.length < 12 || cvv.length < 3){ alert('Enter valid card details'); return; }
-      // optional Luhn check: if card is numeric and length plausible, check
-      if(/^\d+$/.test(card) && card.length >= 12 && card.length <= 19){
-        // don't block if fail; just best-effort
-        // if(!luhnCheck(card)) { /* allow anyway */ }
-      }
-
-      // save buyer info as "previous purchaser" per user's requirement
-      localStorage.setItem('customerName', localStorage.getItem('checkoutName') || '');
-      localStorage.setItem('customerEmail', localStorage.getItem('checkoutEmail') || '');
-
-      // save order summary
-      const order = {
-        id: 'ORD' + Date.now(),
-        product: selected,
-        buyerName: localStorage.getItem('checkoutName') || '',
-        buyerEmail: localStorage.getItem('checkoutEmail') || '',
-        paidAt: new Date().toISOString()
-      };
-      localStorage.setItem('lastOrder', JSON.stringify(order));
-
-      // clear checkout temp keys (we keep selectedProduct for records)
-      localStorage.removeItem('checkoutName');
-      localStorage.removeItem('checkoutEmail');
-
-      // redirect to thank you page
-      location.href = 'thankyou.html';
-    }
-  </script>
+<script>
+  document.getElementById('payBtn').addEventListener('click', function() {
+    alert('Payment successful!');
+    window.location.href = 'thankyou.html';
+  });
+</script>
 </body>
 </html>
