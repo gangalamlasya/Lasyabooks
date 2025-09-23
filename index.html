@@ -1,258 +1,164 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Moonlit Pages — Mini Bookstore</title>
-
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
-
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BookNest | Home</title>
   <style>
-    :root{
-      --primary: #6c5ce7;
-      --secondary: #ff7ab6;
-      --bg: #f7f9fb;
-      --surface: #ffffff;
-      --muted: #6b7280;
-      --radius: 14px;
-      --glass: rgba(255,255,255,0.6);
+    @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Inter:wght@400;500&display=swap');
+
+    body {
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      background: #f7f9fb;
+      color: #333;
     }
 
-    /* Mobile-first base */
-    *{box-sizing:border-box}
-    html,body{height:100%}
-    body{
-      margin:0;
-      font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
-      background: var(--bg);
-      color:#0f172a;
-      -webkit-font-smoothing:antialiased;
-      -moz-osx-font-smoothing:grayscale;
-      line-height:1.45;
-      padding:20px;
+    header {
+      background: url('https://images.unsplash.com/photo-1512820790803-83ca734da794?w=1600') center/cover no-repeat;
+      padding: 6rem 2rem;
+      text-align: center;
+      color: white;
+    }
+    header h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 3rem;
+      margin-bottom: 0.5rem;
+    }
+    header p {
+      font-size: 1.2rem;
+      opacity: 0.9;
     }
 
-    .container{max-width:1100px;margin:0 auto;}
+    .products {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+      padding: 3rem 2rem;
+      max-width: 1200px;
+      margin: auto;
+    }
 
-    /* Hero */
-    .hero{
-      display:grid;
-      grid-template-columns: 1fr;
-      gap:18px;
-      align-items:center;
-      margin-bottom:22px;
-    }
-    .hero-card{
-      background: linear-gradient(135deg, rgba(108,92,231,0.08), rgba(255,122,182,0.04));
-      border-radius:18px;
-      padding:28px;
-      box-shadow: 0 6px 18px rgba(16,24,40,0.06);
-      display:flex;
-      gap:20px;
-      align-items:center;
-    }
-    .hero-left{
-      flex:1;
-    }
-    .brand{
-      font-family:"Playfair Display", Georgia, "Times New Roman", serif;
-      font-size:28px;
-      margin:0;
-      color:var(--primary);
-      letter-spacing:0.3px;
-    }
-    .tagline{
-      margin:8px 0 14px 0;
-      color:var(--muted);
-      font-size:15px;
-    }
-    .cta-row{display:flex;gap:12px;flex-wrap:wrap}
-    .btn{
-      display:inline-flex;
-      align-items:center;
-      gap:10px;
-      padding:11px 16px;
-      border-radius:12px;
-      border:0;
-      cursor:pointer;
-      font-weight:600;
-      background:linear-gradient(90deg,var(--primary), #7f71f0 60%);
-      color: #fff;
-      box-shadow: 0 6px 14px rgba(108,92,231,0.18);
-      transform:translateZ(0);
-      transition: transform .12s ease, box-shadow .12s ease;
-    }
-    .btn.secondary{
+    .card {
       background: #fff;
-      color:var(--primary);
-      border:1px solid rgba(108,92,231,0.08);
-      box-shadow: 0 4px 12px rgba(16,24,40,0.04);
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
     }
-    .btn:active{transform:translateY(1px)}
-    .hero-art{
-      display:none;
-      width:200px;
-      height:140px;
-      border-radius:12px;
-      background: linear-gradient(180deg, rgba(108,92,231,0.12), rgba(255,122,182,0.06));
-      box-shadow: inset 0 -12px 24px rgba(255,255,255,0.12);
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 6px 15px rgba(0,0,0,0.15);
     }
-
-    /* Products */
-    .section-title{
-      font-family:"Playfair Display", serif;
-      font-size:20px;
-      margin:10px 0 14px;
-      color:#111827;
+    .card img {
+      width: 100%;
+      height: 280px;
+      object-fit: cover;
     }
-
-    .products-grid{
-      display:grid;
-      gap:14px;
-      grid-template-columns: repeat(1, 1fr);
+    .card-body {
+      padding: 1rem;
     }
-
-    .card{
-      background: var(--surface);
-      border-radius:14px;
-      padding:14px;
-      display:flex;
-      gap:12px;
-      align-items:stretch;
-      box-shadow: 0 6px 18px rgba(16,24,40,0.04);
-      transition: transform .12s ease, box-shadow .12s ease;
+    .tag {
+      display: inline-block;
+      background: #6c5ce7;
+      color: white;
+      font-size: 0.75rem;
+      padding: 0.2rem 0.6rem;
+      border-radius: 6px;
+      margin-bottom: 0.5rem;
     }
-    .card:hover{transform:translateY(-6px); box-shadow:0 16px 40px rgba(16,24,40,0.06);}
-
-    .thumb{
-      width:120px;
-      min-width:120px;
-      height:160px;
-      border-radius:8px;
-      overflow:hidden;
-      background:linear-gradient(180deg,#f0f0f6,#fff);
-      display:flex;
-      align-items:center;
-      justify-content:center;
+    .card h3 {
+      font-family: 'Playfair Display', serif;
+      margin: 0.3rem 0;
     }
-    .thumb img{width:100%;height:100%;object-fit:cover;display:block}
-
-    .card-body{flex:1;display:flex;flex-direction:column;gap:8px;}
-    .title{font-weight:600;font-size:16px;color:#0f172a}
-    .genre{font-size:12px;padding:6px 8px;border-radius:999px;background:linear-gradient(90deg,var(--primary),var(--secondary));color:white;display:inline-block;font-weight:600}
-    .desc{font-size:13px;color:var(--muted)}
-    .price-row{display:flex;align-items:center;justify-content:space-between;margin-top:auto}
-    .price{font-weight:700;color:var(--primary);font-size:16px}
-    .buy-btn{
-      background: linear-gradient(90deg,var(--secondary), var(--primary));
-      color:white;
-      border:0;padding:10px 12px;border-radius:12px;cursor:pointer;
-      transition: transform .12s ease, box-shadow .12s ease;
-      box-shadow: 0 6px 18px rgba(108,92,231,0.14);
-      font-weight:700;
+    .price {
+      color: #ff7ab6;
+      font-weight: 600;
+      margin: 0.5rem 0;
     }
-    .buy-btn:active{transform:translateY(1px)}
-    .buy-btn:hover{transform:scale(1.03); box-shadow: 0 18px 40px rgba(108,92,231,0.18)}
-
-    /* small meta / footer */
-    .muted{color:var(--muted);font-size:13px;margin-top:12px}
-
-    /* Responsive */
-    @media(min-width:700px){
-      .hero{grid-template-columns: 1fr 300px}
-      .hero-art{display:block}
-      .products-grid{grid-template-columns: repeat(2, 1fr)}
+    .btn {
+      background: #6c5ce7;
+      color: white;
+      border: none;
+      padding: 0.6rem 1rem;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
     }
-    @media(min-width:1000px){
-      .products-grid{grid-template-columns: repeat(3, 1fr)}
+    .btn:hover {
+      transform: scale(1.05);
+      box-shadow: 0 4px 12px rgba(108,92,231,0.4);
     }
-
   </style>
 </head>
 <body>
-  <div class="container">
-    <header class="hero">
-      <div class="hero-card" role="banner">
-        <div class="hero-left">
-          <h1 class="brand">Moonlit Pages</h1>
-          <p class="tagline">A cozy corner of curated tales — find your next great read ✨</p>
-          <div class="cta-row">
-            <button class="btn" onclick="scrollToProducts()">Browse Books</button>
-            <button class="btn secondary" onclick="location.href='#'">Gift Cards</button>
-          </div>
-          <p class="muted">Free shipping for orders over ₹800 • Easy returns within 14 days</p>
-        </div>
+  <header>
+    <h1>BookNest</h1>
+    <p>Your cozy corner for every story ✨</p>
+  </header>
 
-        <div class="hero-art" aria-hidden="true"></div>
+  <section class="products">
+    <div class="card">
+      <img src="https://images.unsplash.com/photo-1544937950-fa07a98d237f?w=500" alt="Sci-Fi">
+      <div class="card-body">
+        <span class="tag">Sci-Fi</span>
+        <h3>Galactic Frontiers</h3>
+        <p>Explore distant galaxies and thrilling space odysseys.</p>
+        <p class="price">₹499</p>
+        <button class="btn" onclick="buyProduct('Galactic Frontiers - Sci-Fi - ₹499')">Buy Now</button>
       </div>
-    </header>
+    </div>
 
-    <main>
-      <h2 class="section-title">Explore Genres</h2>
-
-      <div id="products" class="products-grid" aria-live="polite">
-        <!-- JS will populate products -->
+    <div class="card">
+      <img src="https://images.unsplash.com/photo-1589998059171-988d887df646?w=500" alt="Mystery">
+      <div class="card-body">
+        <span class="tag">Mystery</span>
+        <h3>The Silent Clue</h3>
+        <p>A gripping crime novel full of suspense and secrets.</p>
+        <p class="price">₹399</p>
+        <button class="btn" onclick="buyProduct('The Silent Clue - Mystery - ₹399')">Buy Now</button>
       </div>
+    </div>
 
-      <p style="margin-top:18px;color:var(--muted);font-size:13px">Tip: Click <strong>Buy Now</strong> to choose a book — you'll fill details on the next page.</p>
-    </main>
-  </div>
+    <div class="card">
+      <img src="https://images.unsplash.com/photo-1606112219348-204d7d8b94ee?w=500" alt="Romance">
+      <div class="card-body">
+        <span class="tag">Romance</span>
+        <h3>Love in Bloom</h3>
+        <p>A heartfelt journey of love, loss, and hope.</p>
+        <p class="price">₹299</p>
+        <button class="btn" onclick="buyProduct('Love in Bloom - Romance - ₹299')">Buy Now</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <img src="https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?w=500" alt="Thriller">
+      <div class="card-body">
+        <span class="tag">Thriller</span>
+        <h3>Edge of Fear</h3>
+        <p>A high-stakes thriller that keeps you on the edge.</p>
+        <p class="price">₹449</p>
+        <button class="btn" onclick="buyProduct('Edge of Fear - Thriller - ₹449')">Buy Now</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <img src="https://images.unsplash.com/photo-1507842217343-583bb7270b66?w=500" alt="History">
+      <div class="card-body">
+        <span class="tag">History</span>
+        <h3>Past Chronicles</h3>
+        <p>Step into the stories that shaped civilizations.</p>
+        <p class="price">₹549</p>
+        <button class="btn" onclick="buyProduct('Past Chronicles - History - ₹549')">Buy Now</button>
+      </div>
+    </div>
+  </section>
 
   <script>
-    // Product data — at least 9 genres shown; using placeholders for images
-    const products = [
-      {id:1, title:"Starlight Odyssey", genre:"Science Fiction", price:499, desc:"A spacefaring epic exploring dreams, AI, and distant suns.", img:"https://via.placeholder.com/300x480?text=Scifi"},
-      {id:2, title:"Shadows in the Alley", genre:"Mystery/Crime", price:349, desc:"A gritty detective novel with sharp twists and darker motives.", img:"https://via.placeholder.com/300x480?text=Mystery"},
-      {id:3, title:"When We Were Roses", genre:"Romance", price:299, desc:"A tender tale of second chances and seaside summer days.", img:"https://via.placeholder.com/300x480?text=Romance"},
-      {id:4, title:"The Silent Hour", genre:"Thriller/Suspense", price:399, desc:"Racing chapters and a secret that could unravel everything.", img:"https://via.placeholder.com/300x480?text=Thriller"},
-      {id:5, title:"Echoes of Empire", genre:"Historical Fiction", price:449, desc:"A sweeping story spanning eras and the cost of power.", img:"https://via.placeholder.com/300x480?text=Historical"},
-      {id:6, title:"Midnight Wake", genre:"Horror", price:279, desc:"An atmospheric horror about a house that remembers.", img:"https://via.placeholder.com/300x480?text=Horror"},
-      {id:7, title:"A Life Unbound", genre:"Memoir", price:399, desc:"A moving memoir about resilience, travel, and finding home.", img:"https://via.placeholder.com/300x480?text=Memoir"},
-      {id:8, title:"Tiny Habits, Big Wins", genre:"Self-Help", price:249, desc:"Practical steps to create momentum and better routines.", img:"https://via.placeholder.com/300x480?text=Self-Help"},
-      {id:9, title:"Reporter's Notebook", genre:"Journalism", price:329, desc:"True stories from the field — investigations that mattered.", img:"https://via.placeholder.com/300x480?text=Journalism"}
-    ];
-
-    const productsEl = document.getElementById('products');
-
-    function renderProducts(){
-      productsEl.innerHTML = '';
-      products.forEach(p => {
-        const card = document.createElement('article');
-        card.className = 'card';
-        card.innerHTML = `
-          <div class="thumb" aria-hidden="true"><img src="${p.img}" alt="${p.title} cover"></div>
-          <div class="card-body">
-            <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap">
-              <div class="title">${p.title}</div>
-              <div style="margin-left:auto" class="genre">${p.genre}</div>
-            </div>
-            <div class="desc">${p.desc}</div>
-            <div class="price-row">
-              <div class="price">₹${p.price}</div>
-              <button class="buy-btn" onclick='buyNow(${p.id})' aria-label="Buy ${p.title}">Buy Now</button>
-            </div>
-          </div>
-        `;
-        productsEl.appendChild(card);
-      });
+    function buyProduct(product) {
+      localStorage.setItem("selectedProduct", product);
+      window.location.href = "form.html";
     }
-
-    function buyNow(id){
-      const product = products.find(p => p.id === id);
-      if(!product) return;
-      localStorage.setItem('selectedProduct', JSON.stringify(product));
-      // micro-feedback: tiny scale animation on the clicked button (handled via CSS)
-      // navigate to form page
-      location.href = 'form.html';
-    }
-
-    function scrollToProducts(){
-      document.getElementById('products').scrollIntoView({behavior:'smooth', block:'start'});
-    }
-
-    // initial render
-    renderProducts();
   </script>
 </body>
 </html>
